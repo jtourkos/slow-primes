@@ -2,7 +2,8 @@
   "name": "slow-primes",
   "version": "1.0.0",
   "scripts": {
-    "bench": "ts-node bench/index.ts"
+    "bench": "ts-node bench/index.ts",
+    "test": "node --require ts-node/register --test src/index.test.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.0",
