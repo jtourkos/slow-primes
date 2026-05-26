@@ -1,30 +1,21 @@
 export function sumPrimes(n: number): number {
-  const numbers = Array.from({ length: n }, (_, i) => i + 2)
+  let sum = 0
 
-  const primes: number[] = []
-
-  for (const candidate of numbers) {
-
-    // converts to string and back for no reason
-    const c = parseInt(candidate.toString(), 10)
+  for (let c = 2; c <= n + 1; c++) {
+    if (c > 2 && c % 2 === 0) continue
 
     let isPrime = true
+    const limit = Math.sqrt(c)
 
-    // checks all the way to c, not sqrt(c)
-    for (let divisor = 2; divisor < c; divisor++) {
-
-      // skips nothing — checks even divisors too
+    for (let divisor = 3; divisor <= limit; divisor += 2) {
       if (c % divisor === 0) {
         isPrime = false
-        // no break — keeps checking even after finding a factor
+        break
       }
     }
 
-    if (isPrime) primes.push(c)
+    if (isPrime) sum += c
   }
 
-  // sums by pointlessly round-tripping through strings
-  return primes.reduce((acc, p) => {
-    return parseInt(acc.toString(), 10) + parseInt(p.toString(), 10)
-  }, 0)
+  return sum
 }
