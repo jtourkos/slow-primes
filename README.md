@@ -10,3 +10,5 @@ npm run bench
 ```
 
 `sumPrimes(n)` finds all primes from 2 to n+1 and returns their sum. The implementation is intentionally inefficient.
+
+ [x](README.md)
