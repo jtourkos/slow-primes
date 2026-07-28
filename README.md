@@ -1,14 +1,50 @@
 # slow-primes
 
-A deliberately slow prime-summation function, useful for benchmarking and optimization exercises.
+A deliberately slow TypeScript prime-summation function for benchmarking and optimization exercises.
 
-## Usage
+## What it does
+
+`sumPrimes(n)` checks every integer from `2` through `n + 1` and returns the sum of the prime numbers it finds.
+
+Examples:
+
+```ts
+import { sumPrimes } from "./src/index";
+
+sumPrimes(0);  // 0
+sumPrimes(1);  // 2
+sumPrimes(2);  // 5  (2 + 3)
+sumPrimes(18); // 77 (primes through 19)
+```
+
+## Getting started
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+Run the benchmark:
+
+```bash
 npm run bench
 ```
 
-`sumPrimes(n)` finds all primes from 2 to n+1 and returns their sum. The implementation is intentionally inefficient.
+The benchmark runs `sumPrimes(10000)` multiple times and reports median latency, p95 latency, and operations per second.
 
- [x](README.md)
+## Project layout
+
+- `src/index.ts` — implementation of `sumPrimes`
+- `src/index.test.ts` — Node test suite
+- `bench/index.ts` — simple benchmark runner
+
+## Notes
+
+The implementation is intentionally straightforward and not optimized with a sieve. This makes it useful as a small target for profiling, benchmarking, and optimization practice.
